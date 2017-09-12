@@ -1,0 +1,16 @@
+{
+  "thetop":
+    {
+      "name":"thetop",
+      "host": "thetop.it",
+      "path":"/index.php?page=view_abs&n_abs={s}",
+      "reportCssPaths": "thetop.json"
+    },
+  "on-ice":
+    {
+      "name":"on-ice",
+      "host": "on-ice.it",
+      "path":"/onice/onice_view_report.php?type=1&id={s}",
+      "reportCssPaths": "onice.json"
+    }   
+}
