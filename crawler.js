@@ -41,7 +41,7 @@ function saveReportById(id){
 	        response.on('end', function() {
 	        	if(counter > 1)
 	        	{
-					fs.writeFileSync(target["name"]+"-reports/report-"+id+".html", entities.decode(body), 'utf8'); 
+					fs.writeFileSync(target["name"]+"-reports/"+id+".html", entities.decode(body), 'utf8'); 
 					
 					console.log("report "+id+" written");
 					status["last-id"][target["name"]] = id;
@@ -59,6 +59,10 @@ function saveReportById(id){
 }
 
 function getTarget(){
+	if(process.argv[2] == undefined){
+		console.log("please enter a target name");
+		process.exit(1);
+	}
 	var name = process.argv[2];
 	var data = fs.readFileSync("target.json");
 	data = JSON.parse(data);
