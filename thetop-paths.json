@@ -1,17 +1,77 @@
 {
-  "User":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(2) > td.obfuscate",
-  "TripName":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(3) > td:nth-child(2)",
-  "Region":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(1) > td:nth-child(2)",
-  "StartingFrom":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(1) > td:nth-child(2)",
-  "ElevationGain":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(4) > td:nth-child(4)",
-  "Grade":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(6) > td:nth-child(2)",
-  "UphillSide":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(5) > td:nth-child(2)",
-  "DownhillSide":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(5) > td:nth-child(4)",
-  "MainSnowType":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(7) > td:nth-child(2)",
-  "Date":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(1) > td:nth-child(4)",
-  "StartingAltitude" : "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(4) > td:nth-child(2)",
-  "SnowComment" : "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(10) > td:nth-child(2) > div",
-  "TripComment" : "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(7) > td:nth-child(4)",
-  "StartingValley" : "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(8) > td:nth-child(4)",
-  "TripComment":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(9) > td:nth-child(2) > div"     
+  "User":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(2) > td.obfuscate",
+    "replace":"",
+    "with":""
+    },
+  "TripName":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(3) > td:nth-child(2)",
+    "replace":"",
+    "with":""
+    },
+  "Region":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(1) > td:nth-child(2)",
+    "replace":"",
+    "with":""
+    },
+  "StartingFrom":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(1) > td:nth-child(2)",
+    "replace":"",
+    "with":""
+    },
+  "ElevationGain":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(4) > td:nth-child(4)",
+    "replace":"",
+    "with":""
+    },
+  "Grade":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(6) > td:nth-child(2)",
+    "replace":"",
+    "with":""
+    },
+  "UphillSide":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(5) > td:nth-child(2)",
+    "replace":"",
+    "with":""
+    },
+  "DownhillSide":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(5) > td:nth-child(4)",
+    "replace":"",
+    "with":""
+    },
+  "MainSnowType":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(7) > td:nth-child(2)",
+    "replace":"",
+    "with":""
+    },
+  "Date":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(1) > td:nth-child(4)",
+    "replace":"",
+    "with":""
+    },
+  "StartingAltitude":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(4) > td:nth-child(2)",
+    "replace":"",
+    "with":""
+    },
+  "SnowComment":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(10) > td:nth-child(2) > div",
+    "replace":"",
+    "with":""
+    },
+  "TripComment":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(7) > td:nth-child(4)",
+    "replace":"",
+    "with":""
+    },
+  "StartingValley":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(8) > td:nth-child(4)",
+    "replace":"",
+    "with":""
+    },
+  "TripComment":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(9) > td:nth-child(2) > div",     
+    "replace":"",
+    "with":""
+    }
 }

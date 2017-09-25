@@ -26,7 +26,7 @@ function saveReportById(id){
 	    	var body = '';
 	        var counter = 0;
 
-	        response.setEncoding('binary');
+	        //response.setEncoding('binary');
 	        
 	        response.on('data', function(d) {
 	            body += d;
@@ -52,7 +52,7 @@ function saveReportById(id){
 				{
 					console.log("few data with report " + id);
 				}
-				setTimeout(function() {saveReportById(id+1)}, 1000);
+				/*setTimeout(function() {*/saveReportById(id+1)/*}, 1000);*/
 	        });
 	   }
 	   );

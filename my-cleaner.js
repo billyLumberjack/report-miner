@@ -20,15 +20,12 @@ function cleanProperties(object, t){
 	var replaceStr, withStr;
 
 	for(property in properties){
-
-				replaceStr = properties[property]["replace"];
-		withStr = properties[property]["with"];
-
-		//console.log("for property " + property + " replace " + replaceStr + " with " + withStr);
-
-
-
-		object[property] = object[property].replace(new RegExp(replaceStr,"g"), withStr);
+		if(object[property] != undefined){
+			replaceStr = properties[property]["replace"];
+			withStr = properties[property]["with"];
+			//console.log("for property " + property + " replace " + replaceStr + " with " + withStr);
+			object[property] = object[property].replace(new RegExp(replaceStr,"g"), withStr);
+		}
 	}
 
 	return object;

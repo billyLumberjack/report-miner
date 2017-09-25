@@ -1,15 +1,67 @@
 {
-  "User":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > a:nth-child(1)",
-  "TripName":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)",
-  "Region":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2)",
-  "StartingFrom":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2)",
-  "EndAltitude":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2)",
-  "ElevationGain":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(2)",
-  "Grade":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(2)",
-  "UphillSide":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(8) > td:nth-child(2)",
-  "DownhillSide":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(9) > td:nth-child(2)",
-  "MainSnowTyoe":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(12) > td:nth-child(2)",
-  "OtherSnowType":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(13) > td:nth-child(2)",
-  "AvalancheRisk":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(14) > td:nth-child(2)",
-  "Date":".report-title"     
+  "User":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > a:nth-child(1)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+    },
+  "TripName":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "Region":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "StartingFrom":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "EndAltitude":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2)",
+    "replace":"[^0-9]*",
+    "with":""
+  },
+  "ElevationGain":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(2)",
+    "replace":"[^0-9]*",
+    "with":""
+  },
+  "Grade":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "UphillSide":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(8) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "DownhillSide":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(9) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "MainSnowType":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(12) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "OtherSnowType":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(13) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "AvalancheRisk":{
+    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(14) > td:nth-child(2)",
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  },
+  "Date":{
+    "path":".report-title",     
+    "replace":"^\\s*|\\s*$",
+    "with":""
+  }
 }
