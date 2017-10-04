@@ -1,11 +1,11 @@
 {
-  "User":{
-    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(2) > td.obfuscate",
-    "replace":"",
-    "with":""
-    },
   "TripName":{
     "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(3) > td:nth-child(2)",
+    "replace":"",
+    "with":""
+    },    
+  "User":{
+    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(2) > td.obfuscate",
     "replace":"",
     "with":""
     },

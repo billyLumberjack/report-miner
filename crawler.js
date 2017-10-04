@@ -8,7 +8,7 @@ var target = getTarget();
 var status = getCrawlingStatus();
 
 saveReportById(
-	status["last-id"][target["name"]]+1
+	status["last-id"][target["name"]]
 	);
 
 function saveReportById(id){
@@ -52,7 +52,7 @@ function saveReportById(id){
 				{
 					console.log("few data with report " + id);
 				}
-				/*setTimeout(function() {*/saveReportById(id+1)/*}, 1000);*/
+				/*setTimeout(function() {*/saveReportById(id-1)/*}, 1000);*/
 	        });
 	   }
 	   );

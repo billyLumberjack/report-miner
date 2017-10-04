@@ -32,7 +32,7 @@ var saveCallback = function(obj){
 	
 
 	var params = {
-    	TableName:"my-report-table",
+    	TableName:"report-table",
     	Item:obj
     };
 
