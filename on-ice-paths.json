@@ -63,5 +63,10 @@
     "path":".report-title",     
     "replace":"^\\s*|\\s*$",
     "with":""
-  }
+  },
+  "Images":{
+    "path":"body > table:nth-child(7) > tbody > tr:nth-child(22) > td.reportrow > a",     
+    "replace":"./onice",
+    "with":"http://www.on-ice.it/onice/onice"
+  }  
 }

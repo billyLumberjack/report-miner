@@ -20,7 +20,18 @@ function cleanProperties(object, t){
 	var replaceStr, withStr;
 
 	for(property in properties){
-		if(object[property] != undefined){
+
+
+		if(property === "Images" && object[property] != undefined){
+
+			for(var i=0; i<object[property].length; i++){
+				replaceStr = properties[property]["replace"];
+				withStr = properties[property]["with"];
+				//console.log("for property " + property + " replace " + replaceStr + " with " + withStr);
+				object[property][i] = object[property][i].replace(new RegExp(replaceStr,"g"), withStr);
+			}
+		}
+		else if(object[property] != undefined){
 			replaceStr = properties[property]["replace"];
 			withStr = properties[property]["with"];
 			//console.log("for property " + property + " replace " + replaceStr + " with " + withStr);
@@ -38,7 +49,6 @@ function convertNumbers(object){
 		value = Number(object[key]);
 		if(!isNaN(value))
 			object[key] = value;
-
    }
    return object;	
 }
