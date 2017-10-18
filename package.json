@@ -1,0 +1,30 @@
+{
+  "name": "html_crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.116.0",
+    "fs": "^0.0.2",
+    "firebase": "^4.3.1",
+    "html-entities": "^1.2.0",
+    "firebase-admin": "^5.2.1",
+    "jquery": "^3.2.1",
+    "jsdom": "^3.1.2",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billyLumberjack/report-miner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/billyLumberjack/report-miner/issues"
+  },
+  "homepage": "https://github.com/billyLumberjack/report-miner#readme"
+}
