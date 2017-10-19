@@ -1,3 +1,5 @@
+process.chdir(__dirname);
+
 console.log("starting crawler...");
 
 var Entities = require('html-entities').AllHtmlEntities;
@@ -51,7 +53,7 @@ function saveReportById(id){
 					fs.writeFileSync("../assets/crawling-status.json", status_data);
 
 					crawled++;
-					if(crawled === 100)
+					if(crawled === 50)
 						return;
 				}
 				else

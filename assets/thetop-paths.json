@@ -12,7 +12,48 @@
   "Region": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(1) > td:nth-child(2)",
     "replace": "",
-    "with": ""
+    "with": "",
+    "dictionary": {
+      "Abruzzo": "Abruzzo",
+      "Alto Adige": "Alto Adige",
+      "Altro": "Altro",
+      "Austria": "Austria",
+      "Basilicata": "Basilicata",
+      "Calabria": "Calabria",
+      "Campania": "Campania",
+      "Canada": "Canada",
+      "Cile": "Cile",
+      "Cina": "Cina",
+      "Emilia Romagna": "Emilia Romagna",
+      "Francia": "Francia",
+      "Friuli - Venezia Giulia": "Friuli Venezia Giulia",
+      "Germania": "Germania",
+      "Grecia": "Grecia",
+      "Islanda": "Islanda",
+      "Lazio": "Lazio",
+      "Liguria": "Liguria",
+      "Lombardia": "Lombardia",
+      "Marche": "Marche",
+      "Marocco": "Marocco",
+      "Molise": "Molise",
+      "Norvegia": "Norvegia",
+      "Nuova Zelanda": "Nuova Zelanda",
+      "Piemonte": "Piemonte",
+      "Polonia": "Polonia",
+      "Russia": "Russia",
+      "Sicilia": "Sicilia",
+      "Slovacchia": "Slovacchia",
+      "Slovenia": "Slovenia",
+      "Spagna": "Spagna",
+      "Stati Uniti": "Stati Uniti",
+      "Svezia": "Svezia",
+      "Svizzera": "Svizzera",
+      "Toscana": "Toscana",
+      "Trentino": "Trentino",
+      "Umbria": "Umbria",
+      "Valle d'Aosta": "Valle d'Aosta",
+      "Veneto": "Veneto"
+    }
   },
   "StartingFrom": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(3) > td:nth-child(4)",
@@ -27,27 +68,92 @@
   "Grade": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(6) > td:nth-child(2)",
     "replace": "",
-    "with": ""
+    "with": "",
+    "dictionary": {
+      "BS": "BS",
+      "BSA": "BSA",
+      "MS": "MS",
+      "MSA": "MSA",
+      "OS": "OS",
+      "OSA": "OSA",
+      "ESA": "OSA+"
+    }
   },
   "UphillSide": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(5) > td:nth-child(2)",
     "replace": "",
-    "with": ""
+    "with": "",
+    "dictionary": {
+      "Est": "Est",
+      "Nord": "Nord",
+      "Nord-Est": "Nord-Est",
+      "Nord-Ovest": "Nord-Ovest",
+      "Ovest": "Ovest",
+      "Sud": "Sud",
+      "Sud-Est": "Sud-Est",
+      "Sud-Ovest": "Sud-Ovest"
+    }
   },
   "DownhillSide": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(5) > td:nth-child(4)",
     "replace": "",
-    "with": ""
+    "with": "",
+    "dictionary": {
+      "Est": "Est",
+      "Nord": "Nord",
+      "Nord-Est": "Nord-Est",
+      "Nord-Ovest": "Nord-Ovest",
+      "Ovest": "Ovest",
+      "Sud": "Sud",
+      "Sud-Est": "Sud-Est",
+      "Sud-Ovest": "Sud-Ovest"
+    }
   },
   "MainSnowType": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(7) > td:nth-child(2)",
     "replace": "",
-    "with": ""
+    "with": "",
+    "dictionary": {
+      "Crostosa": "Crostosa",
+      "Farinosa": "Farinosa",
+      "Ghiacciata": "Ghiacciata",
+      "Marcia": "Marcia",
+      "Pesante": "Pesante",
+      "Polvere soffice": "Farinosa",
+      "Trasformata": "Trasformata",
+      "Ventata": "Ventata"
+    }
   },
   "Date": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(1) > td:nth-child(4)",
     "replace": "",
     "with": ""
+  },
+  "TripRate": {
+    "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(7) > td:nth-child(4)",
+    "replace": "",
+    "with": "",
+    "dictionary": {
+      "Consigliabile": "Buono",
+      "Stupendo": "Eccezionale",
+      "Sconsigliabile": "Mediocre"
+    }
+  },
+  "TripDescription": {
+    "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(9) > td:nth-child(2) > div",
+    "replace": "",
+    "with": ""
+  },
+  "SnowRate": {
+    "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(6) > td:nth-child(4)",
+    "replace": "",
+    "with": "",
+    "dictionary": {
+      "Accettabile": "Accettabili",
+      "Consigliabile": "Buone",
+      "Stupendo": "Eccellenti",
+      "Sconsigliabile": "Pessime"
+    }
   },
   "StartingAltitude": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(4) > td:nth-child(2)",
@@ -58,21 +164,6 @@
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(10) > td:nth-child(2) > div",
     "replace": "",
     "with": ""
-  },
-  "TripRate": {
-    "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(7) > td:nth-child(4)",
-    "replace": "",
-    "with": ""
-  },
-  "TripDescription": {
-    "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(9) > td:nth-child(2) > div",
-    "replace": "",
-    "with": ""
-  },  
-  "SnowRate":{
-    "path":"body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(6) > td:nth-child(4)",
-    "replace":"",
-    "with":""
   },
   "StartingValley": {
     "path": "body > table > tbody > tr > td > table:nth-child(2) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td > div.forumlinemain.viewabs > table > tbody > tr:nth-child(2) > td > span > table > tbody > tr:nth-child(8) > td:nth-child(4)",

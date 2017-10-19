@@ -1,3 +1,5 @@
+process.chdir(__dirname);
+
 const fs = require('fs');
 const jsdom = require("jsdom");
 const uuid = require('uuid');

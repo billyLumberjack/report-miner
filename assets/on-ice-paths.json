@@ -1,88 +1,186 @@
 {
-  "TripName":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
-  },  
-  "User":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > a:nth-child(1)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
-    },
-  "Region":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "TripName": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": ""
   },
-  "StartingFrom":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "User": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > a:nth-child(1)",
+    "replace": "^\\s*|\\s*$",
+    "with": ""
   },
-  "EndAltitude":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2)",
-    "replace":"[^0-9]*",
-    "with":""
+  "Region": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "Altro": "Altro",
+      "Austria": "Austria",
+      "Emilia Romagna": "Emilia Romagna",
+      "Francia": "Francia",
+      "Friuli Venezia Giulia": "Friuli Venezia Giulia",
+      "Liguria": "Liguria",
+      "Lombardia": "Lombardia",
+      "Piemonte": "Piemonte",
+      "Sardegna": "Sardegna",
+      "Slovenia": "Slovenia",
+      "Svizzera": "Svizzera",
+      "Trentino Alto Adige": "Trentino",
+      "Valle d'Aosta": "Valle d'Aosta",
+      "Veneto": "Veneto"
+    }
   },
-  "ElevationGain":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(2)",
-    "replace":"[^0-9]*",
-    "with":""
+  "StartingFrom": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": ""
   },
-  "Grade":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "ElevationGain": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(2)",
+    "replace": "[^0-9]*",
+    "with": ""
   },
-  "UphillSide":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(8) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "Grade": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "BS": "BS",
+      "BS+": "BS+",
+      "BSA": "BSA",
+      "BSA+": "BSA+",
+      "MS": "MS",
+      "MS+": "MS+",
+      "MSA": "MSA",
+      "MSA+": "MSA+",
+      "OS": "OS",
+      "OS+": "OS+",
+      "OSA": "OSA",
+      "OSA+": "OSA+"
+    }
   },
-  "DownhillSide":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(9) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "UphillSide": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(8) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "Est": "Est",
+      "Nord": "Nord",
+      "Nord-Est": "Nord-Est",
+      "Nord-Ovest": "Nord-Ovest",
+      "Ovest": "Ovest",
+      "Sud": "Sud",
+      "Sud-Est": "Sud-Est",
+      "Sud-Ovest": "Sud-Ovest",
+      "Varia": "Varia"
+    }
   },
-  "LinkedTrip":{
-    "path":"body > table:nth-child(7) > tbody > tr:nth-child(10) > td.reportrow",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "DownhillSide": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(9) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "Est": "Est",
+      "Nord": "Nord",
+      "Nord-Est": "Nord-Est",
+      "Nord-Ovest": "Nord-Ovest",
+      "Ovest": "Ovest",
+      "Sud": "Sud",
+      "Sud-Est": "Sud-Est",
+      "Sud-Ovest": "Sud-Ovest",
+      "Varia": "Varia"
+    }
   },
-  "MainSnowType":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(12) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "MainSnowType": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(12) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "Crostosa": "Crostosa",
+      "Farinosa": "Farinosa",
+      "Marcia": "Marcia",
+      "Farina pesante": "Pesante",
+      "Trasformata": "Trasformata",
+      "Ventata": "Ventata",
+      "Variabile": "Variabile"
+    }
   },
-  "OtherSnowType":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(13) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "Date": {
+    "path": ".report-title",
+    "replace": "^\\s*|\\s*$",
+    "with": ""
   },
-  "AvalancheRisk":{
-    "path":"body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(14) > td:nth-child(2)",
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "TripRate": {
+    "path": "body > table:nth-child(7) > tbody > tr:nth-child(16) > td.reportrow",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "Buono": "Buono",
+      "Discreto": "Discreto",
+      "Eccezionale": "Eccezionale",
+      "Mediocre": "Mediocre",
+      "Ottimo": "Ottimo",
+      "Pessimo": "Pessimo"
+    }
   },
-  "TripRate":{
-    "path":"body > table:nth-child(7) > tbody > tr:nth-child(16) > td.reportrow",
-    "replace":"^\\s*|\\s*$",
-    "with":""
-  },  
-  "Date":{
-    "path":".report-title",     
-    "replace":"^\\s*|\\s*$",
-    "with":""
+  "TripDescription": {
+    "path": "body > table:nth-child(7) > tbody > tr:nth-child(17) > td.reportcommento",
+    "replace": "^\\s*|\\s*$",
+    "with": ""
   },
-  "Images":{
-    "path":"body > table:nth-child(7) > tbody > tr:nth-child(22) > td.reportrow > a",     
-    "replace":"./onice",
-    "with":"http://www.on-ice.it/onice/onice"
+  "SnowRate": {
+    "path": "body > table:nth-child(7) > tbody > tr:nth-child(15) > td.reportrow",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "Accettabili": "Accettabili",
+      "Buone": "Buone",
+      "Discrete": "Discrete",
+      "Eccellenti": "Eccellenti",
+      "Mediocri": "Mediocri",
+      "Ottime": "Ottime",
+      "Pessime": "Pessime"
+    }
   },
-  "TripDescription":{
-    "path":"body > table:nth-child(7) > tbody > tr:nth-child(17) > td.reportcommento",     
-    "replace":"^\\s*|\\s*$",
-    "with":""
-  }      
-
+  "EndAltitude": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2)",
+    "replace": "[^0-9]*",
+    "with": ""
+  },
+  "LinkedTrip": {
+    "path": "body > table:nth-child(7) > tbody > tr:nth-child(10) > td.reportrow",
+    "replace": "^\\s*|\\s*$",
+    "with": ""
+  },
+  "OtherSnowType": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(13) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "Farinosa": "",
+      "Crostosa": "",
+      "Ventata": "",
+      "Trasformata": "",
+      "Marcia": "",
+      "Farina pesante": "",
+      "Variabile": ""
+    }
+  },
+  "AvalancheRisk": {
+    "path": "body > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(14) > td:nth-child(2)",
+    "replace": "^\\s*|\\s*$",
+    "with": "",
+    "dictionary": {
+      "1 - Debole": 1,
+      "2 - Moderato": 2,
+      "3 - Marcato": 3,
+      "4 - Forte": 4,
+      "5 - Molto forte": 5
+    }
+  },
+  "Images": {
+    "path": "body > table:nth-child(7) > tbody > tr:nth-child(22) > td.reportrow > a",
+    "replace": "./onice",
+    "with": "http://www.on-ice.it/onice/onice"
+  }
 }
