@@ -157,13 +157,13 @@
     "replace": "^\\s*|\\s*$",
     "with": "",
     "dictionary": {
-      "Farinosa": "",
-      "Crostosa": "",
-      "Ventata": "",
-      "Trasformata": "",
-      "Marcia": "",
-      "Farina pesante": "",
-      "Variabile": ""
+      "Crostosa": "Crostosa",
+      "Farinosa": "Farinosa",
+      "Marcia": "Marcia",
+      "Farina pesante": "Pesante",
+      "Trasformata": "Trasformata",
+      "Ventata": "Ventata",
+      "Variabile": "Variabile"
     }
   },
   "AvalancheRisk": {

@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var cleanReport = function(report, target) {
+exports.cleanReport = function(report, target) {
 
 	report = cleanProperties(report, target);
 
@@ -61,5 +61,3 @@ function convertDate(object){
 	}
 	return object;
 }
-
-exports.cleanReport = cleanReport;

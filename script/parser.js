@@ -4,7 +4,9 @@ const fs = require('fs');
 const jsdom = require("jsdom");
 const uuid = require('uuid');
 var http = require('http');
+
 var cleaner = require('./my-cleaner');
+var standardizer = require('./my-standardizer');
 
 console.log("starting parser...");
 
@@ -91,18 +93,22 @@ function parseAndSubmitReport(files,counter, save) {
 			report["Id"] = uuid.v1();
 			report["SearchTripName"] = report["TripName"].toLowerCase();
 
+			//clean
 			report = cleaner.cleanReport(report, target);
+			//standardize
+			report = standardizer.standardizeReport(report,target);
 
 			//save to database
 			save(report);
+			//fs.appendFileSync("ciccio.csv", JSON.stringify(report)+",\n");
 		}
 		//delete current .html file
 		//fs.unlinkSync(target+"-reports/"+filename);	
 		//console.log("deleted\t" + target+"-reports/"+filename);
 		if (counter + 1 < files.length) {
-			setTimeout(function () {
+			//setTimeout(function () {
 				parseAndSubmitReport(files, counter + 1, save);
-			}, 2000);
+			//}, 2000);
 		}
 	});
 }
