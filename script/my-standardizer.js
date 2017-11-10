@@ -24,6 +24,22 @@ exports.standardizeReport = function(report, target){
 		}
 	}
 
+	report = standardizeStartEndAltitudes(report);
+
 	return report;
 	
 };
+
+function standardizeStartEndAltitudes(report) {
+	if (report.ElevationGain != undefined) {
+		//per standardizzare, mi serve almeno il dislivello
+		if(report.StartingAltitude != undefined && report.EndAltitude == undefined){
+			//Starting altitude set && End altitude NOT set
+			report["EndAltitude"] = report.StartingAltitude + report.ElevationGain;
+		} else if(report.StartingAltitude == undefined && report.EndAltitude != undefined){
+			//Starting altitude NOT set && End altitude set
+			report["StartingAltitude"] = report.EndAltitude - report.ElevationGain;
+		}
+	}
+	return report;
+}
