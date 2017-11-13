@@ -106,9 +106,9 @@ function parseAndSubmitReport(files,counter, save) {
 		//fs.unlinkSync(target+"-reports/"+filename);	
 		//console.log("deleted\t" + target+"-reports/"+filename);
 		if (counter + 1 < files.length) {
-			//setTimeout(function () {
+			setTimeout(function () {
 				parseAndSubmitReport(files, counter + 1, save);
-			//}, 2000);
+			}, 2000);
 		}
 	});
 }

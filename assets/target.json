@@ -4,15 +4,23 @@
       "name":"thetop",
       "host": "thetop.it",
       "path":"/index.php?page=view_abs&n_abs={s}",
-      "reportCssPaths": "thetop.json",
-      "encoding":"utf8"
+      "encoding":"utf8",
+      "list":{
+        "urlPath":"/index.php?page=view_ski",
+	"param":"n_abs",
+        "cssPath":"#report > tbody > tr:nth-child(2) > td:nth-child(4) > a"
+      }
     },
   "on-ice":
     {
       "name":"on-ice",
       "host": "on-ice.it",
       "path":"/onice/onice_view_report.php?type=1&id={s}",
-      "reportCssPaths": "onice.json",
-      "encoding":"latin1"
+      "encoding":"latin1",
+      "list":{
+        "urlPath":"/onice/onice_reports.php?type=1",
+	      "param":"id",
+        "cssPath":".skireportlink:first-child"
+      }
     }   
 }
