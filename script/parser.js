@@ -1,9 +1,12 @@
+require('dotenv').config();
+const aws_config = {
+	accessKeyId:process.env.ACCESS_KEY_ID,
+	secretAccessKey:process.env.SECRET_ACCESS_KEY,
+	region: process.env.REGION
+};
 process.chdir(__dirname);
 
-require('dotenv').load();
-
 const CWLogsWritable = require('cwlogs-writable');
-const aws_config = {region: "eu-central-1"};
 const fs = require('fs');
 const jsdom = require("jsdom");
 const uuid = require('uuid');
@@ -122,8 +125,9 @@ function parseAndSubmitReport(files,counter, save) {
 			//fs.appendFileSync("ciccio.csv", JSON.stringify(report)+",\n");
 		}
 		//delete current .html file
-		//fs.unlinkSync(target+"-reports/"+filename);	
-		//logger.log("deleted\t" + target+"-reports/"+filename);
+		fs.unlinkSync("../reports/"+target + "/" + filename);	
+		stream._write("deleted\t" + target+"\t"+filename);
+		
 		if (counter + 1 < files.length) {
 			setTimeout(function () {
 				parseAndSubmitReport(files, counter + 1, save);

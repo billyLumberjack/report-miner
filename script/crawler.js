@@ -1,3 +1,10 @@
+require('dotenv').config();
+const aws_config = {
+	accessKeyId:process.env.ACCESS_KEY_ID,
+	secretAccessKey:process.env.SECRET_ACCESS_KEY,
+	region: process.env.REGION
+};
+
 process.chdir(__dirname);
 
 const CWLogsWritable = require('cwlogs-writable');
@@ -16,9 +23,30 @@ var logStreamName = [
 var stream = new CWLogsWritable({
 	logGroupName: "HTML_SCRAPER/CRAWLER",
 	logStreamName:logStreamName,
-	cloudWatchLogsOptions: {
-		region: "eu-central-1"
-	}
+	cloudWatchLogsOptions: aws_config,
+	onError: function(err, logEvents, next) {
+		if (logEvents) {
+		  console.error(
+			'CWLogsWritable PutLogEvents error',
+			err,
+			JSON.stringify(logEvents)
+		  );
+	
+		  // Resume without adding the log events back to the queue.
+		  next();
+		}
+		else {
+		  // Use built-in behavior of emitting an error,
+		  // clearing the queue, and ignoring all writes to the stream.
+		  next(err);
+		}
+	  }
+	}).on('error', function(err) {
+	  // Always listen for 'error' events to catch non-AWS errors as well.
+	  console.error(
+		'CWLogsWritable error',
+		err
+	  );
 });
 
 stream.write("----------- START -----------");
