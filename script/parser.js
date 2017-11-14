@@ -1,5 +1,7 @@
 process.chdir(__dirname);
 
+require('dotenv').load();
+
 const CWLogsWritable = require('cwlogs-writable');
 const aws_config = {region: "eu-central-1"};
 const fs = require('fs');
