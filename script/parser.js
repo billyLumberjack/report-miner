@@ -35,8 +35,8 @@ var paths = getPathsObject(target);
 var counter;
 var docClient;
 
-stream._write("current target " + target);
-stream._write("current paths " + paths);
+stream.write("current target " + target);
+stream.write("current paths " + paths);
 
 
 var saveCallback = function (obj) {
@@ -47,12 +47,12 @@ var saveCallback = function (obj) {
 
 	docClient.put(params, function (err, data) {
 		if (err) {
-			stream._write(
+			stream.write(
 				"Unable to add item. Error JSON:" + 
 				JSON.stringify(err, null, 2)
 			);
 		} else {
-			stream._write(
+			stream.write(
 				"Added item:"+
 				JSON.stringify(obj, null, 2)
 			);
@@ -77,7 +77,7 @@ function parseAndSubmitReport(files,counter, save) {
 	var filename = files[counter];
 	var index= files[counter].split('.')[0];
 
-	stream._write("parsing " + filename);
+	stream.write("parsing " + filename);
 
 	var report = { "OnsiteId": Number(index) };
 	var htmlString = fs.readFileSync("../reports/"+target + "/" + filename).toString();
@@ -85,7 +85,7 @@ function parseAndSubmitReport(files,counter, save) {
 	//create the object from the html page
 	jsdom.env(htmlString, function (err, window) {
 		if (err) {
-			stream._write("ERROR" + err);
+			stream.write("ERROR" + err);
 			return;
 		}
 
@@ -126,8 +126,8 @@ function parseAndSubmitReport(files,counter, save) {
 		}
 		//delete current .html file
 		fs.unlinkSync("../reports/"+target + "/" + filename);	
-		stream._write("deleted\t" + target+"\t"+filename);
-		
+		stream.write("deleted\t" + target+"\t"+filename);
+
 		if (counter + 1 < files.length) {
 			setTimeout(function () {
 				parseAndSubmitReport(files, counter + 1, save);
