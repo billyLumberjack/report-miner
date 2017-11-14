@@ -1,36 +1,61 @@
-console.log(new Date(), "------------ starting crawler ----------");
-
 process.chdir(__dirname);
 
+const CWLogsWritable = require('cwlogs-writable');
 const jsdom = require("jsdom");
 const http = require('http');
 const fs = require('fs');
 const $ = require("jquery");
+const uuid = require("uuid");
+
+var logStreamName = [
+	process.argv[2],
+	new Date().toISOString(),
+	uuid.v1()
+].filter(Boolean).join('/').replace(/[:*]/g, '');
+
+var stream = new CWLogsWritable({
+	logGroupName: "HTML_SCRAPER/CRAWLER",
+	logStreamName:logStreamName,
+	cloudWatchLogsOptions: {
+		region: "eu-central-1"
+	}
+});
+
+stream.write("----------- START -----------");
+
 
 var target = getTarget();
 var globalStatus = getCrawlingStatus();
 var targetStatus = globalStatus[target.name];
 
-console.log(
-	"current target\n",
-	JSON.stringify(target, null, 2)
+
+
+stream.write(
+	"current target" + 
+	JSON.stringify(target,null,2)
 );
 
-console.log(
-	"current global status\n",
+stream.write(
+	"current global status" + 
 	JSON.stringify(globalStatus, null, 2)
 );
 //getting promise from last index
 getLastIndex()
 	.then((lastIndex) => {
-		console.log(
-			"starting crawling from",
-			targetStatus.last_id + 1, "to", lastIndex);
+		stream.write(
+			"starting crawling from " + 
+			(targetStatus.last_id + 1) +
+			" to " +
+			lastIndex);
 
 		saveReportById(targetStatus.last_id + 1, lastIndex)
 	})
 	.catch((err) => {
-		console.error("error retrieving last index from list\n", err)
+		stream.write(
+			"ERROR" + 
+			"error retrieving last index from list\n" + 
+			err
+		);
 	});
 
 function getLastIndex() {
@@ -49,8 +74,11 @@ function getLastIndex() {
 				response.on('data', (chunk) => body += chunk);
 
 				response.on('error', (err) => {
-					console.log("NET error retrieving list for new reports with target" + target["name"]);
-					console.error(err);
+					stream.write(
+						"ERROR" + 
+						"NET error retrieving list for new reports with target" + target["name"] + 
+						err
+					);
 					reject(err);
 				});
 
@@ -58,8 +86,11 @@ function getLastIndex() {
 					//create the object from the html page
 					jsdom.env(body, function (err, window) {
 						if (err) {
-							console.log("JSDOM error retrieving list for new reports with target" + target["name"]);
-							console.error(err);
+							stream.write(
+								"ERROR" + 
+								"JSDOM error retrieving list for new reports with target" + target["name"] + 
+								err
+							);
 							reject(err);
 						}
 						$(window);
@@ -99,7 +130,11 @@ function saveReportById(id, endId) {
 
 				response.on('error', (err) => {
 					var url = target.host + target.path.replace("{s}", id);
-					console.log("NET error with report", id, "at url", url);
+					stream.write(
+						"ERROR",
+						"NET error with report " + id +" at url " + url,
+						err
+					);
 
 					setTimeout(function () {
 						saveReportById(id)
@@ -111,7 +146,7 @@ function saveReportById(id, endId) {
 					if (counter > 1) {
 						//response valid, write html page to filesystem
 						fs.writeFileSync("../reports/" + target.name + "/" + id + ".html", body);
-						console.log("written report", id);
+						stream.write("written report " + id);
 
 						//update crawling global status
 						targetStatus.last_id = id;
@@ -122,7 +157,7 @@ function saveReportById(id, endId) {
 						);
 					}
 					else {
-						console.log("few data with report " + id);
+						stream.write("few data with report " + id);
 					}
 
 					//crawl NEXT one!
@@ -135,7 +170,8 @@ function saveReportById(id, endId) {
 		//close http get
 	}
 	else{
-		console.log("nothing new to crawl")
+		stream.write("nothing new to crawl");
+		return;
 	}
 }
 //close save report function
@@ -144,7 +180,7 @@ function saveReportById(id, endId) {
 
 function getTarget() {
 	if (process.argv[2] == undefined) {
-		console.log("please enter a target name");
+		stream.write("please enter a target name");
 		process.exit(1);
 	}
 	var name = process.argv[2];

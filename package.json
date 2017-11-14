@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.116.0",
-    "fs": "^0.0.2",
-    "html-entities": "^1.2.0",
-    "jquery": "^3.2.1",
-    "jsdom": "^3.1.2",
-    "uuid": "^3.1.0"
+    "aws-sdk": "2.116.0",
+    "cwlogs-writable": "^1.0.0",
+    "dotenv": "^4.0.0",
+    "fs": "0.0.2",
+    "jquery": "3.2.1",
+    "jsdom": "3.1.2",
+    "uuid": "3.1.0"
   },
   "devDependencies": {},
   "scripts": {
