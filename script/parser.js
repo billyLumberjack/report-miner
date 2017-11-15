@@ -65,11 +65,9 @@ initDb();
 //read files inside report folder and foreach one call the parser
 //the last file is marked with last because has to close the firebase app
 fs.readdir("../reports/"+target, function (err, files) {
-	
 	files = files.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));
 	counter = files.length;
-
-	parseAndSubmitReport(files,0, saveCallback);
+	//parseAndSubmitReport(files,0, saveCallback);
 });
 
 
