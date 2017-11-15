@@ -2,5 +2,6 @@
 .env
 TODO.txt
 assets/serviceAccountKey.json
+assets/crawling-status.json
 node_modules/
 reports/
