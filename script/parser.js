@@ -134,7 +134,7 @@ function parseAndSubmitReport(files,counter, save) {
 			report = standardizer.standardizeReport(report,target);
 
 			//save to database
-			//save(report);
+			save(report);
 		}
 		//delete current .html file
 		fs.unlinkSync("../reports/"+target + "/" + filename);	
