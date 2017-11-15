@@ -1,3 +1,9 @@
+//get target from command line input
+if (process.argv[2] == undefined) {
+	stream.write("please enter a target name");
+	process.exit(1);
+}
+
 require('dotenv').config();
 const aws_config = {
 	accessKeyId:process.env.ACCESS_KEY_ID,
@@ -29,14 +35,11 @@ var stream = new CWLogsWritable({
 
 stream.write("----------- START -----------");
 
-//get target from command line input
 var target = process.argv[2];
 var paths = getPathsObject(target);
-var counter;
 var docClient;
 
 stream.write("current target " + target);
-stream.write("current paths " + paths);
 
 
 var saveCallback = function (obj) {
@@ -51,10 +54,18 @@ var saveCallback = function (obj) {
 				"Unable to add item. Error JSON:" + 
 				JSON.stringify(err, null, 2)
 			);
+			console.log(
+				"Unable to add item. Error JSON:" + 
+				JSON.stringify(err, null, 2)				
+			);
 		} else {
 			stream.write(
 				"Added item:"+
 				JSON.stringify(obj, null, 2)
+			);
+			console.log(
+				"Added item:"+
+				JSON.stringify(obj, null, 2)				
 			);
 		}
 	});
@@ -66,8 +77,12 @@ initDb();
 //the last file is marked with last because has to close the firebase app
 fs.readdir("../reports/"+target, function (err, files) {
 	files = files.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));
-	counter = files.length;
-	//parseAndSubmitReport(files,0, saveCallback);
+	if(files.length > 0)
+		parseAndSubmitReport(files,0, saveCallback);
+	else{
+		stream.write("no documents to parse");
+		stream.write("----------- END -----------");
+	}
 });
 
 
@@ -119,8 +134,7 @@ function parseAndSubmitReport(files,counter, save) {
 			report = standardizer.standardizeReport(report,target);
 
 			//save to database
-			save(report);
-			//fs.appendFileSync("ciccio.csv", JSON.stringify(report)+",\n");
+			//save(report);
 		}
 		//delete current .html file
 		fs.unlinkSync("../reports/"+target + "/" + filename);	
@@ -131,6 +145,8 @@ function parseAndSubmitReport(files,counter, save) {
 				parseAndSubmitReport(files, counter + 1, save);
 			}, 2000);
 		}
+		else
+			stream.write("----------- END -----------");
 	});
 }
 

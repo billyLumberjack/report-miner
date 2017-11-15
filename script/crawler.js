@@ -13,6 +13,8 @@ const http = require('http');
 const fs = require('fs');
 const $ = require("jquery");
 const uuid = require("uuid");
+const path = require('path');
+const assetsFolder = "../assets";
 
 var logStreamName = [
 	process.argv[2],
@@ -52,11 +54,14 @@ var stream = new CWLogsWritable({
 stream.write("----------- START -----------");
 
 
+
 var target = getTarget();
 var globalStatus = getCrawlingStatus();
 var targetStatus = globalStatus[target.name];
 
+const reportFolderPath = "../reports/" + target.name;
 
+ensureDirectoryExistence(reportFolderPath + "/token");
 
 stream.write(
 	"current target" + 
@@ -76,7 +81,7 @@ getLastIndex()
 			" to " +
 			lastIndex);
 
-		saveReportById(targetStatus.last_id + 1, lastIndex)
+		saveReportById(targetStatus.last_id + 1, lastIndex);
 	})
 	.catch((err) => {
 		stream.write(
@@ -173,14 +178,14 @@ function saveReportById(id, endId) {
 					//is the response valid?
 					if (counter > 1) {
 						//response valid, write html page to filesystem
-						fs.writeFileSync("../reports/" + target.name + "/" + id + ".html", body);
+						fs.writeFileSync(reportFolderPath + "/" + id + ".html", body);
 						stream.write("written report " + id);
 
 						//update crawling global status
 						targetStatus.last_id = id;
 						globalStatus[target.name] = targetStatus;
 						fs.writeFileSync(
-							"../assets/crawling-status.json",
+							assetsFolder+"/crawling-status.json",
 							JSON.stringify(globalStatus, null, 2)
 						);
 					}
@@ -199,6 +204,7 @@ function saveReportById(id, endId) {
 	}
 	else{
 		stream.write("nothing new to crawl");
+		stream.write("----------- END -----------");
 		return;
 	}
 }
@@ -212,13 +218,13 @@ function getTarget() {
 		process.exit(1);
 	}
 	var name = process.argv[2];
-	var data = fs.readFileSync("../assets/target.json");
+	var data = fs.readFileSync(assetsFolder+"/target.json");
 	data = JSON.parse(data);
 	return data[name];
 }
 
 function getCrawlingStatus() {
-	var data = fs.readFileSync("../assets/crawling-status.json");
+	var data = fs.readFileSync(assetsFolder+"/crawling-status.json");
 	return JSON.parse(data);
 }
 
@@ -230,3 +236,12 @@ function getParameterByName(name, url) {
 	if (!results[2]) return '';
 	return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+function ensureDirectoryExistence(filePath) {
+	var dirname = path.dirname(filePath);
+	if (fs.existsSync(dirname)) {
+	  return true;
+	}
+	ensureDirectoryExistence(dirname);
+	fs.mkdirSync(dirname);
+  }
