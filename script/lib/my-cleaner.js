@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-exports.cleanReport = function(report, target) {
+exports.cleanReport = function(report, pp) {
 
-	report = cleanProperties(report, target);
+	report = cleanProperties(report, pp);
 
 	report = convertNumbers(report);
 	report = convertDate(report);
@@ -11,9 +11,9 @@ exports.cleanReport = function(report, target) {
 	return report;
 };
 
-function cleanProperties(object, t){
-	var data = fs.readFileSync("../assets/"+t+"-paths.json");
-	var properties = JSON.parse(data);
+function cleanProperties(object, pp){
+	//var data = fs.readFileSync("../assets/"+t+"-paths.json");
+	var properties = pp;
 
 	var replaceStr, withStr;
 
@@ -34,6 +34,7 @@ function cleanProperties(object, t){
 			withStr = properties[property]["with"];
 			//console.log("for property " + property + " replace " + replaceStr + " with " + withStr);
 			object[property] = object[property].replace(new RegExp(replaceStr,"g"), withStr);
+			object[property] = object[property].trim();
 		}
 	}
 

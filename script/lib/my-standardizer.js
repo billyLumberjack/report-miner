@@ -1,13 +1,12 @@
 const fs = require('fs');
 
-exports.standardizeReport = function(report, target){
+exports.standardizeReport = function(report, propertiesData){
 	//console.log("\x1b[33m","standardizing report",report.Id);
 	// per ogni proprietà, controlla se nel <target>-paths.json esiste un dictionary
 	// se esiste sostituisci il corrente valore in report con quello del dizionario
 
-	var propertiesData = fs.readFileSync("../assets/"+target+"-paths.json");
-	propertiesData = JSON.parse(propertiesData);
-
+	//var propertiesData = fs.readFileSync("../assets/"+target+"-paths.json");
+	//propertiesData = JSON.parse(propertiesData);
 	var dictionary = {};
 
 	for(property in propertiesData){

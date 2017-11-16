@@ -1,12 +1,4 @@
-require('dotenv').config();
-const aws_config = {
-	accessKeyId:process.env.ACCESS_KEY_ID,
-	secretAccessKey:process.env.SECRET_ACCESS_KEY,
-	region: process.env.REGION
-};
-
-process.chdir(__dirname);
-
+const dotenv = require('dotenv');
 const CWLogsWritable = require('cwlogs-writable');
 const jsdom = require("jsdom");
 const http = require('http');
@@ -14,7 +6,17 @@ const fs = require('fs');
 const $ = require("jquery");
 const uuid = require("uuid");
 const path = require('path');
+
 const assetsFolder = "../assets";
+
+process.chdir(__dirname);
+
+dotenv.config();
+const aws_config = {
+	accessKeyId:process.env.ACCESS_KEY_ID,
+	secretAccessKey:process.env.SECRET_ACCESS_KEY,
+	region: process.env.REGION
+};
 
 var logStreamName = [
 	process.argv[2],
@@ -203,6 +205,7 @@ function saveReportById(id, endId) {
 		//close http get
 	}
 	else{
+		console.log("nothing to crawl", id, endId);
 		stream.write("nothing new to crawl");
 		stream.write("----------- END -----------");
 		return;
