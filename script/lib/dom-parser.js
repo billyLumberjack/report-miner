@@ -7,11 +7,7 @@ const jQuery = require("jquery");
  */
 
 
-function jsdomCallback(err, window,paths,resolve,reject) {
-
-    
-    if (err)
-        reject("ERROR with jsdom" + err);
+function parseDom(window,paths) {
 
     $ = jQuery(window);
     var report = {};
@@ -37,11 +33,13 @@ function jsdomCallback(err, window,paths,resolve,reject) {
     if (report["TripName"] != undefined) {
 
         report["Type"] = "ski-mountaineering";
-        report["Id"] = uuid.v1();
+        //report["Id"] = uuid.v1();
 
         //save to database
-        resolve(report);
-        //save(report);
+        return report;
+    }
+    else{
+        return null;
     }
 }
 
@@ -54,7 +52,16 @@ exports.parseAndSaveFromHtmlString = function (htmlString,pp) {
         jsdom.env(
             htmlString,
             function(err,window){
-                jsdomCallback(err,window,pp,resolve,reject);
+
+                if(err)
+                    reject("ERROR", err);
+                
+                var obj = parseDom(window, pp);
+                if(obj != null){
+                    resolve(obj);
+                }else{
+                    reject("Invalid report !!!");
+                }
             }
         );
     });

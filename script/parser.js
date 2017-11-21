@@ -5,7 +5,8 @@ const http = require('http');
 const cleaner = require('./lib/my-cleaner');
 const standardizer = require('./lib/my-standardizer');
 const CwLogsHelper = require('./lib/cw-logs-helper');
-const DynamoDbHelper = require('./lib/dynamo-db-helper');
+//const DbHelper = require('./lib/dynamo-db-helper');
+const DbHelper = require('./lib/mongo-db-helper');
 const domParser = require('./lib/dom-parser');
 
 process.chdir(__dirname);
@@ -21,23 +22,27 @@ const aws_config = {
 	secretAccessKey:process.env.SECRET_ACCESS_KEY,
 	region: process.env.REGION
 };
+
+
+
 const cwLogsHelper = new CwLogsHelper("HTML_SCRAPER/PARSER", target,aws_config)
-const dbHelper = new DynamoDbHelper(aws_config); 
-//var docClient = initDb();
 
 var paths = getPathsObject(target);
 
-
-
 cwLogsHelper.write("----------- START -----------");
 cwLogsHelper.write("current target " + target);
+
+var dbHelper = new DbHelper(
+	process.env.DB_URL,
+	process.env.COLLECTION
+);
 
 //read files inside report folder and foreach one call the parser
 //the last file is marked with last because has to close the firebase app
 fs.readdir("../reports/"+target, function (err, files) {
 	files = files.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));
 	if(files.length > 0)
-		parseAndSubmitReport(files,0, dbHelper.putReport);
+		parseAndSubmitReport(files,0, dbHelper);
 	else{
 		cwLogsHelper.write("no documents to parse");
 		cwLogsHelper.write("----------- END -----------");
@@ -45,7 +50,7 @@ fs.readdir("../reports/"+target, function (err, files) {
 });
 
 
-function parseAndSubmitReport(files,index, save) {
+function parseAndSubmitReport(files,index, dbh) {
 	var filename = files[index];
 
 	cwLogsHelper.write("parsing " + filename);
@@ -54,40 +59,45 @@ function parseAndSubmitReport(files,index, save) {
 	domParser
 		.parseAndSaveFromHtmlString(htmlString, paths)
 		.then((report) => {
-			
 			//clean
 			report = cleaner.cleanReport(report, paths);
+
 			//standardize
 			report = standardizer.standardizeReport(report, paths);
 
 			report["SearchTripName"] = report["TripName"].toLowerCase();
 			report["OnsiteId"] = Number(files[index].split('.')[0]);
 			report["Site"] = target;
+			report["CreatedAt"] = new Date().getTime();
 			
-			save(report);
+			dbh.putReport(report);
 			//delete current .html file
 			fs.unlinkSync("../reports/" + target + "/" + filename);
 			cwLogsHelper.write("deleted\t" + target + "\t" + filename);
 
 			if (index + 1 < files.length) {
 				setTimeout(function () {
-					parseAndSubmitReport(files, index + 1, save);
-				}, 2000);
+					parseAndSubmitReport(files, index + 1, dbh);
+				}, 500);
 			}
-			else
+			else{
 				cwLogsHelper.write("----------- END -----------");
+			}
 		})
 		.catch((err) => {
-			console.log(err)
-			throw err;
+			cwLogsHelper.write(err)
+
+			fs.unlinkSync("../reports/" + target + "/" + filename);
+			cwLogsHelper.write("deleted\t" + target + "\t" + filename);
+
+			if (index + 1 < files.length) {
+				setTimeout(function () {
+					parseAndSubmitReport(files, index + 1, dbh);
+				}, 500);
+			}
 		});
 
 
-}
-
-function initDb() {
-	AWS.config.update(aws_config);
-	return new AWS.DynamoDB.DocumentClient();
 }
 
 function getPathsObject(t) {

@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const CWLogsWritable = require('cwlogs-writable');
+const CwLogsHelper = require('./lib/cw-logs-helper');
 const jsdom = require("jsdom");
 const http = require('http');
 const fs = require('fs');
@@ -10,50 +10,22 @@ const path = require('path');
 const assetsFolder = "../assets";
 
 process.chdir(__dirname);
-
 dotenv.config();
+
+if (process.argv[2] == undefined)
+	throw "please enter a target name";
+
 const aws_config = {
 	accessKeyId:process.env.ACCESS_KEY_ID,
 	secretAccessKey:process.env.SECRET_ACCESS_KEY,
 	region: process.env.REGION
 };
 
-var logStreamName = [
-	process.argv[2],
-	new Date().toISOString(),
-	uuid.v1()
-].filter(Boolean).join('/').replace(/[:*]/g, '');
+const cwLogsHelper = new CwLogsHelper("HTML_SCRAPER/CRAWLER", process.argv[2],aws_config)
 
-var stream = new CWLogsWritable({
-	logGroupName: "HTML_SCRAPER/CRAWLER",
-	logStreamName:logStreamName,
-	cloudWatchLogsOptions: aws_config,
-	onError: function(err, logEvents, next) {
-		if (logEvents) {
-		  console.error(
-			'CWLogsWritable PutLogEvents error',
-			err,
-			JSON.stringify(logEvents)
-		  );
-	
-		  // Resume without adding the log events back to the queue.
-		  next();
-		}
-		else {
-		  // Use built-in behavior of emitting an error,
-		  // clearing the queue, and ignoring all writes to the stream.
-		  next(err);
-		}
-	  }
-	}).on('error', function(err) {
-	  // Always listen for 'error' events to catch non-AWS errors as well.
-	  console.error(
-		'CWLogsWritable error',
-		err
-	  );
-});
 
-stream.write("----------- START -----------");
+
+cwLogsHelper.write("----------- START -----------");
 
 
 
@@ -65,19 +37,19 @@ const reportFolderPath = "../reports/" + target.name;
 
 ensureDirectoryExistence(reportFolderPath + "/token");
 
-stream.write(
+cwLogsHelper.write(
 	"current target" + 
 	JSON.stringify(target,null,2)
 );
 
-stream.write(
+cwLogsHelper.write(
 	"current global status" + 
 	JSON.stringify(globalStatus, null, 2)
 );
 //getting promise from last index
 getLastIndex()
 	.then((lastIndex) => {
-		stream.write(
+		cwLogsHelper.write(
 			"starting crawling from " + 
 			(targetStatus.last_id + 1) +
 			" to " +
@@ -86,7 +58,7 @@ getLastIndex()
 		saveReportById(targetStatus.last_id + 1, lastIndex);
 	})
 	.catch((err) => {
-		stream.write(
+		cwLogsHelper.write(
 			"ERROR" + 
 			"error retrieving last index from list\n" + 
 			err
@@ -109,7 +81,7 @@ function getLastIndex() {
 				response.on('data', (chunk) => body += chunk);
 
 				response.on('error', (err) => {
-					stream.write(
+					cwLogsHelper.write(
 						"ERROR" + 
 						"NET error retrieving list for new reports with target" + target["name"] + 
 						err
@@ -121,7 +93,7 @@ function getLastIndex() {
 					//create the object from the html page
 					jsdom.env(body, function (err, window) {
 						if (err) {
-							stream.write(
+							cwLogsHelper.write(
 								"ERROR" + 
 								"JSDOM error retrieving list for new reports with target" + target["name"] + 
 								err
@@ -165,7 +137,7 @@ function saveReportById(id, endId) {
 
 				response.on('error', (err) => {
 					var url = target.host + target.path.replace("{s}", id);
-					stream.write(
+					cwLogsHelper.write(
 						"ERROR",
 						"NET error with report " + id +" at url " + url,
 						err
@@ -181,7 +153,7 @@ function saveReportById(id, endId) {
 					if (counter > 1) {
 						//response valid, write html page to filesystem
 						fs.writeFileSync(reportFolderPath + "/" + id + ".html", body);
-						stream.write("written report " + id);
+						cwLogsHelper.write("written report " + id);
 
 						//update crawling global status
 						targetStatus.last_id = id;
@@ -192,7 +164,7 @@ function saveReportById(id, endId) {
 						);
 					}
 					else {
-						stream.write("few data with report " + id);
+						cwLogsHelper.write("few data with report " + id);
 					}
 
 					//crawl NEXT one!
@@ -206,8 +178,8 @@ function saveReportById(id, endId) {
 	}
 	else{
 		console.log("nothing to crawl", id, endId);
-		stream.write("nothing new to crawl");
-		stream.write("----------- END -----------");
+		cwLogsHelper.write("nothing new to crawl");
+		cwLogsHelper.write("----------- END -----------");
 		return;
 	}
 }
@@ -217,7 +189,7 @@ function saveReportById(id, endId) {
 
 function getTarget() {
 	if (process.argv[2] == undefined) {
-		stream.write("please enter a target name");
+		cwLogsHelper.write("please enter a target name");
 		process.exit(1);
 	}
 	var name = process.argv[2];
