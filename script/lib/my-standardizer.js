@@ -23,7 +23,7 @@ exports.standardizeReport = function(report, propertiesData){
 		}
 	}
 
-	report = standardizeStartEndAltitudes(report);
+	//report = standardizeStartEndAltitudes(report);
 
 	return report;
 	

@@ -104,4 +104,3 @@ function getPathsObject(t) {
 	var data = fs.readFileSync("../assets/"+target + "-paths.json");
 	return JSON.parse(data);
 }
-

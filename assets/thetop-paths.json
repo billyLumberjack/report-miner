@@ -76,7 +76,13 @@
       "MSA": "MSA",
       "OS": "OS",
       "OSA": "OSA",
-      "ESA": "OSA+"
+      "ESA": "OSA+",
+      "Sciatore medio":"MS",
+      "Sciatore buono":"BS",
+      "Sciatore ottimo":"OS",
+      "Sci-alpinista medio":"MSA",
+      "Sci-alpinista buono":"BSA",
+      "Sci-alpinista ottimo":"OSA"
     }
   },
   "UphillSide": {
