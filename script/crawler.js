@@ -74,7 +74,7 @@ function getLastIndex() {
 			}
 		};
 
-		const req = http.request(httpRequestOptions, handleHttpResponse );
+		const req = http.request(httpRequestOptions, response => handleHttpResponse(response, resolve, reject) );
 
 		req.on('error', function(error) {
 			cwLogsHelper.write(
@@ -90,7 +90,7 @@ function getLastIndex() {
 	});
 }
 
-function handleHttpResponse(response){
+function handleHttpResponse(response, resolve, reject){
 	var body = '';
 	response.setEncoding(target["encoding"]);
 
