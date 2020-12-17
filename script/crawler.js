@@ -57,7 +57,7 @@ getLastIndex()
 	})
 	.catch((err) => {
 		cwLogsHelper.write(
-			"ERROR" +
+			"ERROR " +
 			"error retrieving last index from list\n" +
 			err
 		);
@@ -66,47 +66,63 @@ getLastIndex()
 function getLastIndex() {
 	return new Promise((resolve, reject) => {
 
-		http.get({
+		const httpRequestOptions = {
 			host: target.host,
 			path: target.list.urlPath,
 			headers: {
 				"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0"
 			}
-		}, (response) => {
-			var body = '';
-			response.setEncoding(target["encoding"]);
+		};
 
-			response.on('data', (chunk) => body += chunk);
+		const req = http.request(httpRequestOptions, handleHttpResponse );
 
-			response.on('error', (err) => {
+		req.on('error', function(error) {
+			cwLogsHelper.write(
+				"ERROR " +
+				"NET error retrieving list for new reports with target" + target["name"] +
+				error
+			);
+			reject(error);
+		});
+
+		req.end();
+
+	});
+}
+
+function handleHttpResponse(response){
+	var body = '';
+	response.setEncoding(target["encoding"]);
+
+	response.on('data', (chunk) => body += chunk);
+
+	response.on('error', (err) => {
+		cwLogsHelper.write(
+			"ERROR " +
+			"NET error retrieving list for new reports with target" + target["name"] +
+			err
+		);
+		reject(err);
+	});
+
+	response.on('end', () => {
+		//create the object from the html page
+		jsdom.env(body, function (err, window) {
+			if (err) {
 				cwLogsHelper.write(
-					"ERROR" +
-					"NET error retrieving list for new reports with target" + target["name"] +
+					"ERROR " +
+					"JSDOM error retrieving list for new reports with target" + target["name"] +
 					err
 				);
 				reject(err);
-			});
-
-			response.on('end', () => {
-				//create the object from the html page
-				jsdom.env(body, function (err, window) {
-					if (err) {
-						cwLogsHelper.write(
-							"ERROR" +
-							"JSDOM error retrieving list for new reports with target" + target["name"] +
-							err
-						);
-						reject(err);
-					}
-					$(window);
-					resolve(
-						getParameterByName(
-							target["list"]["param"],
-							window.$(target["list"]["cssPath"]).attr("href")
-						)
-					);
-				});
-			});
+			}
+			$(window);
+			resolve(
+				getParameterByName(
+					target["list"]["param"],
+					window.$(target["list"]["cssPath"]).attr("href")
+				)
+			);
 		});
 	});
 }
@@ -136,7 +152,7 @@ function saveReportById(id, endId) {
 				response.on('error', (err) => {
 					var url = target.host + target.path.replace("{s}", id);
 					cwLogsHelper.write(
-						"ERROR",
+						"ERROR ",
 						"NET error with report " + id + " at url " + url,
 						err
 					);
